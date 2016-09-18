@@ -8,7 +8,7 @@
 namespace IcyApril\Tail;
 
 
-class Tail
+class Tail implements \SplSubject
 {
 
 }

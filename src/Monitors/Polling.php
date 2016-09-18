@@ -14,7 +14,7 @@ class Polling implements Monitor
 
     public function __construct(string $file)
     {
-        if (!is_file($file)) {
+        if ( ! is_file($file)) {
             throw new \Exception("File does not exist.");
         }
 
