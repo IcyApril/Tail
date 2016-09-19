@@ -39,16 +39,16 @@ Hello 3
 
 Suppose we then append a line to the file:
 
-````
+```php
 file_put_contents($fileLocation, "Hello 4" . PHP_EOL, FILE_APPEND | LOCK_EX);
-````
+```
 
 Running ````getTail```` again will yield ````Hello 4````:
 
-````
+```php
 echo $tail->getTail();
 // Hello 4
-````
+```
 
 
 ## When to run getTail?
