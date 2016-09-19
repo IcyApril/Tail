@@ -11,6 +11,7 @@ class Config
 {
     private $file;
     private $follow;
+    private $lines;
 
     /**
      * Config constructor.
@@ -29,13 +30,19 @@ class Config
     }
 
     /**
-     * Indicates whether last lines of file should be actively tracked.
+     * Set amount of lines that should be initially read from tail.
      *
-     * @param bool $follow
+     * @param int $lines
+     *
+     * @throws \Exception
      */
-    public function follow(bool $follow)
+    public function setLines(int $lines)
     {
-        $this->follow = $follow;
+        if ($lines < 0) {
+            throw new \Exception("Line count must be a positive integer (0 acceptable).");
+        }
+
+        $this->lines = $lines;
     }
 
     /**
@@ -49,16 +56,18 @@ class Config
     }
 
     /**
-     * Get follow status.
+     * Get line count to read, defaults to 0.
      *
-     * @return bool
+     * @param int $lines
+     *
+     * @return int
      */
-    public function getFollow(): bool
+    public function getLines()
     {
-        if ( ! isset($this->follow)) {
-            return false;
+        if ( ! isset($this->lines)) {
+            return 0;
         }
 
-        return $this->follow;
+        return $this->lines;
     }
 }

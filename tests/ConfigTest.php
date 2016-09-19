@@ -20,16 +20,22 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         new \IcyApril\Tail\Config($fileLocation . 'NoExist');
     }
 
-    public function testGetFollow()
+    public function testSetLines()
     {
         $fileLocation = tempnam(sys_get_temp_dir(), 'followTest');
         $config = new \IcyApril\Tail\Config($fileLocation);
-        $this->assertEquals(false, $config->getFollow());
+        $this->assertEquals(0, $config->getLines());
 
-        $config->follow(true);
-        $this->assertEquals(true, $config->getFollow());
+        $config->setLines(0);
+        $this->assertEquals(0, $config->getLines());
 
-        $config->follow(false);
-        $this->assertEquals(false, $config->getFollow());
+        $config->setLines(1);
+        $this->assertEquals(1, $config->getLines());
+
+        $config->setLines(10);
+        $this->assertEquals(10, $config->getLines());
+
+        $this->expectException(Exception::class);
+        $config->setLines(-1);
     }
 }
