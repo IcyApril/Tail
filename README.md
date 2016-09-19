@@ -1,6 +1,11 @@
- # PHP Tail Library
+[![Build Status](https://travis-ci.org/IcyApril/Tail.svg?branch=master)](https://travis-ci.org/IcyApril/Tail)
+[![Code Climate](https://codeclimate.com/github/IcyApril/Tail/badges/gpa.svg)](https://codeclimate.com/github/IcyApril/Tail)
+[![Test Coverage](https://codeclimate.com/github/IcyApril/Tail/badges/coverage.svg)](https://codeclimate.com/github/IcyApril/Tail/coverage)
+[![Issue Count](https://codeclimate.com/github/IcyApril/Tail/badges/issue_count.svg)](https://codeclimate.com/github/IcyApril/Tail)
 
-A PHP Library for tailing files.
+# PHP Tail Library
+
+A PHP Library for tailing files, supporting PHP 7.0 and above.
 
 Currently, this library allows you to get the tail of a given file. Subsequent calls to the ````getTail```` function
 will return whatever has been appended since the last call.

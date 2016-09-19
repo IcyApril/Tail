@@ -16,6 +16,7 @@ class File
      * File constructor.
      *
      * @param string $file
+     *
      * @throws \Exception
      */
     function __construct(string $file)
@@ -124,10 +125,9 @@ class File
             $buffer = 4096;
 
             return $buffer;
-        } else {
-            $buffer = ($lines < 2 ? 64 : ($lines < 10 ? 512 : 4096));
-
-            return $buffer;
         }
+
+        $buffer = ($lines < 2 ? 64 : ($lines < 10 ? 512 : 4096));
+        return $buffer;
     }
 }

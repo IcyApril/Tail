@@ -10,7 +10,6 @@ namespace IcyApril\Tail;
 class Config
 {
     private $file;
-    private $follow;
     private $lines;
 
     /**

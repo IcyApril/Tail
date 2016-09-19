@@ -35,6 +35,9 @@ class FileTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, $file->countLines());
 
         unlink($fileLocation);
+
+        $this->expectException(Exception::class);
+        new \IcyApril\Tail\File($fileLocation.'NoExist');
     }
 
     public function testGetLastLines()
@@ -55,6 +58,10 @@ class FileTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($file->getLastLines(4, true), "Hello 1" . PHP_EOL . "Hello 2" . PHP_EOL . "Hello 3");
         $this->assertEquals($file->getLastLines(4, false), "Hello 1" . PHP_EOL . "Hello 2" . PHP_EOL . "Hello 3");
+
+        file_put_contents($fileLocation, "Hello 1" . PHP_EOL . "Hello 2" . PHP_EOL . "Hello 3");
+        $file = new \IcyApril\Tail\File($fileLocation);
+        $this->assertEquals($file->getLastLines(1, true), "Hello 3");
 
     }
 }
